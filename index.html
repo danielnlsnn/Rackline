@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Rackline – Colocation & Managed Servers in Frankfurt</title>
+  <meta name="description" content="Rackline hosts and manages your servers in a Frankfurt data center. Transparent rack pricing, remote hands around the clock.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400..900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #F6F7F9;
+      --white: #FFFFFF;
+      --ink: #0F2F3A;
+      --muted: #52636B;
+      --cobalt: #2446D8;
+      --led: #1FA35B;
+      --line: #D5DBDF;
+      --font: "Schibsted Grotesk", "Segoe UI", Roboto, Arial, sans-serif;
+      --wrap: 1140px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--ink);
+      background: var(--paper);
+    }
+
+    a { color: inherit; }
+    a:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--cobalt);
+      outline-offset: 3px;
+    }
+
+    .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ---------- Header ---------- */
+    .site-header { border-bottom: 1px solid var(--line); background: var(--white); }
+    .site-header .wrap {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem; min-height: 72px;
+    }
+    .logo {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-weight: 800; font-size: 1.3rem; text-decoration: none;
+    }
+    .logo-mark { width: 22px; height: 22px; }
+    .nav { display: flex; align-items: center; gap: 2rem; }
+    .nav a { text-decoration: none; font-weight: 500; }
+    .nav a.nav-link:hover { color: var(--cobalt); }
+    @media (max-width: 760px) { .nav .nav-link { display: none; } }
+
+    .btn {
+      display: inline-block; padding: 0.75rem 1.3rem; font-weight: 700;
+      text-decoration: none; border-radius: 6px; border: 2px solid transparent;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+    .btn-primary { background: var(--cobalt); color: var(--white); }
+    .btn-primary:hover { background: #1A36B0; }
+    .btn-secondary { border-color: var(--ink); color: var(--ink); }
+    .btn-secondary:hover { background: var(--ink); color: var(--white); }
+
+    /* ---------- Hero ---------- */
+    .hero { padding: 4.5rem 0 5rem; }
+    .hero .wrap {
+      display: grid; grid-template-columns: 1.25fr 1fr; gap: 3rem; align-items: center;
+    }
+    .hero h1 {
+      margin: 0 0 1.25rem; font-weight: 800;
+      font-size: clamp(2.4rem, 5.4vw, 4.2rem); line-height: 1.02; letter-spacing: -0.025em;
+      max-width: 15ch;
+    }
+    .hero p { margin: 0 0 2rem; font-size: 1.2rem; color: var(--muted); max-width: 44ch; }
+    .actions { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+
+    /* Rack illustration: the one memorable element */
+    .rack { width: 100%; max-width: 380px; justify-self: center; }
+    .rack .led { fill: #C7D0D4; }
+    .rack .led.on { animation: power-on 0.3s ease forwards; }
+    @keyframes power-on { to { fill: var(--led); } }
+    .rack .led.on:nth-of-type(1) { animation-delay: 0.3s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .rack .led.on { animation: none; fill: var(--led); }
+    }
+
+    @media (max-width: 860px) {
+      .hero .wrap { grid-template-columns: 1fr; }
+      .rack { max-width: 280px; justify-self: start; }
+    }
+
+    /* ---------- Facts strip ---------- */
+    .facts { background: var(--ink); color: var(--white); padding: 2rem 0; }
+    .facts dl {
+      margin: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .facts dt { font-size: 1.9rem; font-weight: 800; line-height: 1.1; }
+    .facts dd { margin: 0.25rem 0 0; color: #B8C7CD; }
+    @media (max-width: 760px) { .facts dl { grid-template-columns: 1fr 1fr; } }
+
+    /* ---------- Sections ---------- */
+    section { padding: 5.5rem 0; }
+    h2 {
+      margin: 0 0 1rem; font-weight: 800; font-size: clamp(1.9rem, 3.6vw, 2.7rem);
+      line-height: 1.08; letter-spacing: -0.02em; max-width: 22ch;
+    }
+    .lead { margin: 0 0 3rem; color: var(--muted); font-size: 1.15rem; max-width: 56ch; }
+
+    /* Services: a spec-style list rather than cards */
+    .services { background: var(--white); }
+    .service {
+      display: grid; grid-template-columns: 240px 1fr; gap: 2rem;
+      padding: 2rem 0; border-top: 1px solid var(--line);
+    }
+    .service:last-child { border-bottom: 1px solid var(--line); }
+    .service h3 { margin: 0; font-size: 1.3rem; }
+    .service p { margin: 0 0 0.75rem; max-width: 60ch; }
+    .service ul { margin: 0; padding-left: 1.2rem; color: var(--muted); }
+    @media (max-width: 760px) { .service { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+    /* Pricing table */
+    .table-scroll { overflow-x: auto; }
+    .pricing {
+      width: 100%; min-width: 620px; border-collapse: collapse; background: var(--white);
+      border: 1px solid var(--line);
+    }
+    .pricing th, .pricing td {
+      text-align: left; padding: 1rem 1.25rem; border-bottom: 1px solid var(--line);
+    }
+    .pricing thead th { background: #EAEEF1; font-size: 0.95rem; }
+    .pricing td.price { font-weight: 800; font-size: 1.2rem; white-space: nowrap; }
+    .pricing tbody tr:last-child td { border-bottom: 0; }
+    .pricing tr.featured td { background: #EEF2FF; }
+    .note { margin: 1.25rem 0 0; color: var(--muted); max-width: 70ch; }
+
+    /* Migration process: a genuine sequence */
+    .process { background: var(--white); }
+    .timeline {
+      list-style: none; margin: 0; padding: 0;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.75rem;
+    }
+    .timeline li { position: relative; padding-top: 2.75rem; }
+    .timeline li::before {
+      content: attr(data-week);
+      position: absolute; top: 0; left: 0;
+      font-weight: 700; color: var(--cobalt);
+    }
+    .timeline li::after {
+      content: ""; position: absolute; top: 1.9rem; left: 0; right: -1.75rem;
+      height: 3px; background: var(--line);
+    }
+    .timeline li:last-child::after { right: 0; }
+    .timeline h3 { margin: 0 0 0.4rem; font-size: 1.15rem; }
+    .timeline p { margin: 0; color: var(--muted); }
+    @media (max-width: 860px) {
+      .timeline { grid-template-columns: 1fr; }
+      .timeline li::after { display: none; }
+      .timeline li { padding-top: 1.9rem; border-left: 3px solid var(--line); padding-left: 1.25rem; }
+      .timeline li::before { left: 1.25rem; }
+    }
+
+    /* FAQ with native details/summary */
+    .faq-list { max-width: 780px; border-top: 1px solid var(--line); }
+    .faq-list details { border-bottom: 1px solid var(--line); }
+    .faq-list summary {
+      cursor: pointer; list-style: none; padding: 1.25rem 2.5rem 1.25rem 0;
+      font-weight: 700; font-size: 1.1rem; position: relative;
+    }
+    .faq-list summary::-webkit-details-marker { display: none; }
+    .faq-list summary::after {
+      content: "+"; position: absolute; right: 0.25rem; top: 50%;
+      transform: translateY(-50%); font-size: 1.5rem; font-weight: 400;
+    }
+    .faq-list details[open] summary::after { content: "–"; }
+    .faq-list details p { margin: 0 0 1.25rem; color: var(--muted); max-width: 64ch; }
+
+    /* Contact */
+    .contact { background: var(--cobalt); color: var(--white); }
+    .contact h2 { color: var(--white); }
+    .contact p { color: #DCE3FF; font-size: 1.15rem; max-width: 50ch; margin: 0 0 2rem; }
+    .contact .btn-primary { background: var(--white); color: var(--cobalt); }
+    .contact .btn-primary:hover { background: #E4E9FF; }
+    .contact .btn-secondary { border-color: var(--white); color: var(--white); }
+    .contact .btn-secondary:hover { background: var(--white); color: var(--cobalt); }
+    .contact a:focus-visible { outline-color: var(--white); }
+
+    .site-footer { padding: 2rem 0; color: var(--muted); font-size: 0.95rem; }
+    .site-footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#" class="logo">
+        <svg class="logo-mark" viewBox="0 0 22 22" aria-hidden="true">
+          <rect x="1" y="1" width="20" height="20" rx="3" fill="#0F2F3A"/>
+          <rect x="5" y="5" width="12" height="3" fill="#FFFFFF"/>
+          <rect x="5" y="10" width="12" height="3" fill="#FFFFFF"/>
+          <rect x="5" y="15" width="7" height="2" fill="#1FA35B"/>
+        </svg>
+        Rackline
+      </a>
+      <nav class="nav" aria-label="Main">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#pricing" class="nav-link">Pricing</a>
+        <a href="#faq" class="nav-link">FAQ</a>
+        <a href="#contact" class="btn btn-primary">Get a quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="wrap">
+        <div>
+          <h1 id="hero-title">Your servers in Frankfurt, looked after by engineers.</h1>
+          <p>Colocation and managed servers for small and mid-sized companies. Rack space, power and network from one provider, with remote hands whenever you need them.</p>
+          <div class="actions">
+            <a href="#contact" class="btn btn-primary">Get a quote</a>
+            <a href="#pricing" class="btn btn-secondary">View rack pricing</a>
+          </div>
+        </div>
+
+        <!-- Server rack illustration -->
+        <svg class="rack" viewBox="0 0 240 320" role="img" aria-label="Illustration of a server rack with running servers">
+          <rect x="10" y="6" width="220" height="308" rx="6" fill="#0F2F3A"/>
+          <rect x="24" y="20" width="192" height="280" rx="2" fill="#1B4552"/>
+          <g fill="#FFFFFF">
+            <rect x="32" y="30" width="176" height="28" rx="2"/>
+            <rect x="32" y="64" width="176" height="28" rx="2"/>
+            <rect x="32" y="98" width="176" height="44" rx="2"/>
+            <rect x="32" y="148" width="176" height="28" rx="2"/>
+            <rect x="32" y="182" width="176" height="28" rx="2"/>
+            <rect x="32" y="216" width="176" height="18" rx="2" fill="#DCE3E7"/>
+            <rect x="32" y="240" width="176" height="52" rx="2"/>
+          </g>
+          <g fill="#D5DBDF">
+            <rect x="44" y="40" width="90" height="8" rx="1"/>
+            <rect x="44" y="74" width="90" height="8" rx="1"/>
+            <rect x="44" y="108" width="110" height="8" rx="1"/>
+            <rect x="44" y="124" width="110" height="8" rx="1"/>
+            <rect x="44" y="158" width="90" height="8" rx="1"/>
+            <rect x="44" y="192" width="90" height="8" rx="1"/>
+            <rect x="44" y="250" width="120" height="8" rx="1"/>
+            <rect x="44" y="266" width="120" height="8" rx="1"/>
+          </g>
+          <circle class="led on" cx="194" cy="44" r="4" style="animation-delay:.3s"/>
+          <circle class="led on" cx="194" cy="78" r="4" style="animation-delay:.45s"/>
+          <circle class="led on" cx="194" cy="120" r="4" style="animation-delay:.6s"/>
+          <circle class="led on" cx="194" cy="162" r="4" style="animation-delay:.75s"/>
+          <circle class="led on" cx="194" cy="196" r="4" style="animation-delay:.9s"/>
+          <circle class="led on" cx="194" cy="266" r="4" style="animation-delay:1.05s"/>
+          <circle class="led" cx="180" cy="266" r="4"/>
+        </svg>
+      </div>
+    </section>
+
+    <div class="facts">
+      <div class="wrap">
+        <dl>
+          <div><dt>99.99%</dt><dd>Power and network availability</dd></div>
+          <div><dt>15 min</dt><dd>Response time for remote hands</dd></div>
+          <div><dt>2 × 10G</dt><dd>Redundant uplinks per rack</dd></div>
+          <div><dt>ISO 27001</dt><dd>Certified data center</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <section id="services" class="services" aria-labelledby="services-title">
+      <div class="wrap">
+        <h2 id="services-title">Everything your hardware needs</h2>
+        <p class="lead">Bring your own servers or rent ours. Either way, you get one contact for space, power, network and hands-on support.</p>
+
+        <div class="service">
+          <h3>Colocation</h3>
+          <div>
+            <p>Rack space from a single unit to a full cabinet, with redundant power feeds and cooling.</p>
+            <ul>
+              <li>A+B power feeds with metered usage</li>
+              <li>Lockable racks and 24/7 access with badge</li>
+              <li>Cross connects to carriers and cloud on-ramps</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service">
+          <h3>Managed servers</h3>
+          <div>
+            <p>We install, patch and monitor your servers, so your team can focus on applications.</p>
+            <ul>
+              <li>Linux and Windows Server administration</li>
+              <li>Backups to a second location</li>
+              <li>Monitoring with alerts to your team</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="service">
+          <h3>Remote hands</h3>
+          <div>
+            <p>Our technicians are on site around the clock and act as your hands in the data center.</p>
+            <ul>
+              <li>Hardware swaps, reboots and cabling</li>
+              <li>Photo documentation of every job</li>
+              <li>First 30 minutes per month included</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="pricing" aria-labelledby="pricing-title">
+      <div class="wrap">
+        <h2 id="pricing-title">Rack pricing</h2>
+        <p class="lead">Monthly prices, 12-month minimum term. Power is billed by actual usage.</p>
+        <div class="table-scroll">
+          <table class="pricing">
+            <thead>
+              <tr>
+                <th scope="col">Package</th>
+                <th scope="col">Space</th>
+                <th scope="col">Power included</th>
+                <th scope="col">Network</th>
+                <th scope="col">Per month</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Single server</td><td>1U</td><td>150 W</td><td>1 Gbit/s</td><td class="price">€59</td>
+              </tr>
+              <tr>
+                <td>Quarter rack</td><td>10U</td><td>1 kW</td><td>1 Gbit/s</td><td class="price">€290</td>
+              </tr>
+              <tr class="featured">
+                <td>Half rack</td><td>21U</td><td>2 kW</td><td>10 Gbit/s</td><td class="price">€520</td>
+              </tr>
+              <tr>
+                <td>Full rack</td><td>42U</td><td>4 kW</td><td>2 × 10 Gbit/s</td><td class="price">€890</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">All prices plus VAT. Setup is free for contracts of 24 months or longer. Additional power is charged at €0.38 per kWh.</p>
+      </div>
+    </section>
+
+    <section class="process" aria-labelledby="process-title">
+      <div class="wrap">
+        <h2 id="process-title">Moving in takes about four weeks</h2>
+        <p class="lead">We plan the migration with you and handle the physical work, so downtime stays within a single maintenance window.</p>
+        <ol class="timeline">
+          <li data-week="Week 1">
+            <h3>Assessment</h3>
+            <p>We review your hardware, power draw and network requirements.</p>
+          </li>
+          <li data-week="Week 2">
+            <h3>Planning</h3>
+            <p>You get a rack layout, IP plan and a timed migration schedule.</p>
+          </li>
+          <li data-week="Week 3">
+            <h3>Installation</h3>
+            <p>We mount, cable and document everything, and test the uplinks.</p>
+          </li>
+          <li data-week="Week 4">
+            <h3>Go-live</h3>
+            <p>Your services switch over in the agreed window, with us on site.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="faq" aria-labelledby="faq-title">
+      <div class="wrap">
+        <h2 id="faq-title">Common questions</h2>
+        <div class="faq-list">
+          <details>
+            <summary>Can I visit my servers in person?</summary>
+            <p>Yes. After registration you get a personal badge and can access your rack at any time. Visitors need to be announced 24 hours in advance.</p>
+          </details>
+          <details>
+            <summary>What happens if a power feed fails?</summary>
+            <p>Every rack has two independent feeds from separate UPS systems, backed by diesel generators. Servers with dual power supplies keep running without interruption.</p>
+          </details>
+          <details>
+            <summary>Do you support my own IP addresses?</summary>
+            <p>Yes. We can announce your own IP ranges via BGP, or assign addresses from our pool if you don't have any.</p>
+          </details>
+          <details>
+            <summary>How is remote hands work billed?</summary>
+            <p>The first 30 minutes each month are included. After that, we bill in 15-minute steps at €22 per step. You approve every job before we start.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact" aria-labelledby="contact-title">
+      <div class="wrap">
+        <h2 id="contact-title">Get a quote for your setup</h2>
+        <p>Tell us how many servers you run and what they need. You'll get a written quote within one working day.</p>
+        <div class="actions">
+          <a href="mailto:sales@example.com?subject=Colocation%20quote" class="btn btn-primary">Request a quote</a>
+          <a href="#pricing" class="btn btn-secondary">Compare packages</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>© 2026 Rackline Data Services</span>
+      <span>Demo website – fictional business created as a portfolio project.</span>
+    </div>
+  </footer>
+
+</body>
+</html>
